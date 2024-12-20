@@ -1,0 +1,30 @@
+stages:
+  prepare:
+    cmd: python src/prepare.py
+    deps:
+      - src/prepare.py
+    outs:
+      - data/X_train.csv
+      - data/X_test.csv
+      - data/y_train.csv
+      - data/y_test.csv
+
+  train:
+    cmd: python src/train.py
+    deps:
+      - src/train.py
+      - data/X_train.csv
+      - data/y_train.csv
+    params:
+      - train
+    outs:
+      - models/model.pth
+
+  evaluate:
+    cmd: python src/evaluate.py
+    deps:
+      - src/evaluate.py
+      - models/model.pth
+      - data/X_test.csv
+      - data/y_test.csv
+

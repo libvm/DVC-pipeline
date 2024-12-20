@@ -1,0 +1,6 @@
+train:
+  learning_rate: 0.001
+  batch_size: 32
+  epochs: 100
+  hidden_size: 84
+  dropout_rate: 0.5
